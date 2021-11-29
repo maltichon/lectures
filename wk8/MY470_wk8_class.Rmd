@@ -115,11 +115,11 @@ You can run python directly in R Markdown files. R can also be ran directly in J
 ```{r}
 # Install the packages to run python
 # You should comment this out to knit.
-# install.packages("reticulate")
+install.packages("reticulate")
 
 # Load the Interface to python
 # Note the differences with the cell below in loading python libraries.
-library(reticulate)
+#library(reticulate)
 
 ```
 
@@ -267,7 +267,7 @@ x
 ```
 
 
-You can find out the data type for each object in `R` using the function `class` (simular to `type()`), or functions that start with `is.` and then the data type:
+You can find out the data type for each object in `R` using the function `class` (similar to `type()`), or functions that start with `is.` and then the data type:
 
 ```{r}
 class("hello world!")
@@ -428,7 +428,7 @@ for (x in 1:10) {
 }
 ```
 
- In R you can also puth this on a singular line.
+ In R you can also put this on a singular line.
  
 ```{r}
 
@@ -487,7 +487,7 @@ addPercent <- function(x){
   # Takes the raw numeric material and returns a percentages.
   
  percent <- round(x * 100, digits = 1)
- result <- paste(percent, "%")
+ result <- paste0(percent, "%")
  
  return(result)
 }
@@ -529,6 +529,31 @@ print(ls)
 ```
 
 _Your cell here._
+```{r}
+ls_r <- list()
+for (i in 1:100){
+  if(i%%3==0){
+    ls_r <- c(ls_r, NA)
+  } else{
+    ls_r <- c(ls_r, i)
+  }
+}
+ls_r
+```
+
+```{r Answer1}
+ls <- rep(0)
+
+for (x in 1:100) {
+  if (x %% 3 == 0) {
+    ls[x] <- NA
+  } else {
+    ls[x] <- x
+  }
+}
+ls
+```
+
 
 ```{python}
 # Exercise 2: Use a for-loop with if-statement to identify the even integers.
@@ -545,6 +570,10 @@ print(summ)
 ```
 
 _Your cell here._
+```{r}
+
+```
+
 
 #### Functions Exercises
 
@@ -655,6 +684,18 @@ ans = [i**2 for i in lst if type(i) == int]
 ```
 
 _Your cell here._
+```{r}
+lst <- c(1, 3, 2, 4.5, 7, 8, 10, 3, 5, 4, 7, 3.33)
+ans <- rep(0)
+for (x in lst) {
+  y <- x ** 2
+  if (is.integer(y)) {
+    ans <- c(ans, y) 
+  }
+}
+
+```
+
 
 ```{python}
 # Exercise 6: Using the function ifelse(), replicate the list
